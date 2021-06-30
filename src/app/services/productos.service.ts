@@ -13,17 +13,17 @@ export class ProductosService {
   constructor( private http: HttpClient) {
 
     this.cargarProductos();
-
    }
 
    // tslint:disable-next-line: typedef
    private cargarProductos(){
 
      this.http.get('https://angular-html-4f89c-default-rtdb.firebaseio.com/productos_idx.json')
-     .subscribe( (resp: Producto) => {
+     .subscribe( (resp: any) => {
         console.log(resp);
-        // this.productos = resp;
+        this.productos = resp;
         this.cargando = false;
       });
+
   }
 }
