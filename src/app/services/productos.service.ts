@@ -20,10 +20,14 @@ export class ProductosService {
 
      this.http.get('https://angular-html-4f89c-default-rtdb.firebaseio.com/productos_idx.json')
      .subscribe( (resp: any) => {
-        console.log(resp);
         this.productos = resp;
         this.cargando = false;
       });
+  }
+
+  // tslint:disable-next-line: typedef
+  getProducto( id: string){
+    return this.http.get(`https://angular-html-4f89c-default-rtdb.firebaseio.com/productos/${ id }.json`);
 
   }
 }
