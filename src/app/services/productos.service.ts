@@ -19,15 +19,10 @@ export class ProductosService {
 
    // tslint:disable-next-line: typedef
    private cargarProductos(){
-
-    return new Promise( (resolve, reject) => {
-
       this.http.get('https://angular-html-4f89c-default-rtdb.firebaseio.com/productos_idx.json')
       .subscribe( (resp: any) => {
           this.productos = resp;
           this.cargando = false;
-          resolve();
-         });
     });
 
   }
@@ -42,11 +37,9 @@ export class ProductosService {
 
     if ( this.productos.length === 0 ){
       // cargar productos
-      this.cargarProductos().then(() => {
         // ejecutar despues de tener los productos
         // Aplicar filtro
         this.filtrarProductos( termino );
-      });
     } else{
       // aplicar filtro
       this.filtrarProductos( termino );
